@@ -9,7 +9,7 @@
     </div>
     <div class="col-4">
         <div class="card">
-            <img src="{{member.photoUrl || './assests/user.png'}}" alt="{{member.knownAs}}" class="card-img-top img-thumbnail">
+            <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}" class="card-img-top img-thumbnail">
             <div class="card-body">
                 <div>
                     <strong>Location:</strong>
@@ -36,7 +36,7 @@
 
     <div class="col-8">
         <tabset class="member-tabset">
-            <tab heading='About {{member.knownAs}}'>
+            <tab heading='About {{member.knownAs | titlecase}}'>
                 <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
                     <h4 class="mt-2">Description</h4>
                     <textarea class="form-control" [(ngModel)]="member.introduction" name="introduction" rows="6"></textarea>
