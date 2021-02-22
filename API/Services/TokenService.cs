@@ -20,10 +20,11 @@ namespace API.Services
 
         public string CreateToken(AppUser user)
         {
-            // create claims
+            // create claims which can be accessible on a token
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
+                new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
             };
 
             // create credentials
