@@ -13,7 +13,7 @@ namespace API.Entities
         public AppUser Recipient { get; set; }
         public string Content { get; set; }
         public DateTime? DateRead { get; set; }
-        public DateTime? MessageSent { get; set; } = DateTime.Now;
+        public DateTime? MessageSent { get; set; } = DateTime.UtcNow;
         
         // If a sender has deleted the message, we don't want to delete it for the recipient
         public bool SenderDeleted { get; set; }
