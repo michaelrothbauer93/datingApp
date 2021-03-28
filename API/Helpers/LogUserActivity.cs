@@ -19,10 +19,10 @@ namespace API.Helpers
             var userId = resultContext.HttpContext.User.GetUserId();
 
             // Allows us to use the IUserRepository by requesting the service fo ruse
-            var repo = resultContext.HttpContext.RequestServices.GetService<IUserRepository>();
-            var user = await repo.GetUserByIdAsync(userId);
+            var uow = resultContext.HttpContext.RequestServices.GetService<IUnitOfWork>();
+            var user = await uow.UserRepository.GetUserByIdAsync(userId);
             user.LastActive = DateTime.Now;
-            await repo.SaveAllAsync();
+            await uow.Complete();
         }
     }
 }
